@@ -1,8 +1,6 @@
 def extendedEuclidean(a, b):
     if a == 0:
         return (b, 0, 1)
-    x1 = 0
-    y1 = 0
     d = extendedEuclidean(b % a, a)
     x = d[2] - (b // a) * d[1]
     y = d[1]
