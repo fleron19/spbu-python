@@ -21,5 +21,5 @@ def is_safe(board, row, col):
            abs(board[i] - col) == abs(i - row):
             return False
     return True
-
-print(len(n_queens_recursion(int(input()))))
+inp = int(input())
+print(len(n_queens_recursion(inp)))

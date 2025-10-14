@@ -10,11 +10,12 @@ def is_valid(board):
 
 def n_queens_bruteforce(n):
 
-    solutions = []
+    solutions = 0
     for permutation in itertools.permutations(range(n)):
         if is_valid(permutation):
-            solutions.append(permutation)
+            solutions += 1
     return solutions
 
-print(len(n_queens_bruteforce(int(input()))))
+inp = int(input())
+print(n_queens_bruteforce(inp))
 
