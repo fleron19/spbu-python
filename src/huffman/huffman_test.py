@@ -1,6 +1,7 @@
 from huffman import encode_text, decode_text, encode_file, decode_file
 import filecmp
 import os
+import pytest
 
 def test_text_code():
     original = "Hello, world!"
@@ -32,3 +33,15 @@ def test_zeros_file_code():
     decode_file("zeros_encoded", "zeros_res")
     assert filecmp.cmp("zeros", "zeros_res") # Encoded file is 7 times smaller because data is repeating
 
+# checking only length, because exact codes don't affect efficency ("Hi" = 01 or "Hi" = 10 are same things in this terms)
+@pytest.mark.parametrize("inp, length", [
+    ("A", 1),
+    ("Hi", 2),
+    ("Hello", 10),
+    ("foo", 3),
+    ("bar", 5),
+    ("aaa", 3),
+    ("lorem ipsum", 37)
+])
+def test_precomputed_cases(inp, length):
+    assert len(encode_text(inp)[0]) == length
