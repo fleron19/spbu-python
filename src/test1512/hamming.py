@@ -62,4 +62,5 @@ def decode(arr: str) -> int:
     else:
         return len(arr)-correction
 
-print(decode(encode("h")))
+data =  ''.join(format(x, 'b') for x in bytearray('Hi', 'utf-8'))
+print(data)
