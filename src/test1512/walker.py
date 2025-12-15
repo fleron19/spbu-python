@@ -2,7 +2,7 @@ import random
 from math import floor
 
 class Walker:
-    def __init__(self, pairs):
+    def __init__(self, pairs: list[tuple[str, float]]):
         self.pairs = pairs
         self.psum = 0
         self.pairsd = {}
@@ -30,6 +30,7 @@ class Walker:
                 self.recepients.append(self.new_pairs[i])
             elif self.pairs[i][1] < self.new_pairs[i][1]:
                 self.donors.append(self.new_pairs[i])
+    
         while (self.recepients or self.donors):
             self.recepients[0][1] += self.donors[0][1] - self.pairsd[self.donors[0][0]]
             remain = self.avg - (self.donors[0][1] - self.pairsd[self.donors[0][0]])
@@ -41,7 +42,7 @@ class Walker:
                 self.recepients.pop(0)
         
         self.table.append([self.table[-1][1], self.table[0][0], 1])
-    def get_random(self):
+    def get_random(self) -> str:
         value = random.random()
         row_num = floor(self.num * value)
         row = self.table[row_num]
@@ -50,5 +51,5 @@ class Walker:
         elif value > row[2]:
             return row[1]
 
-w1 = Walker([("A", 0.07), ("B", 0.31), ("C", 0.35), ("D", 0.27)])
-print(w1.get_random())
+
+
